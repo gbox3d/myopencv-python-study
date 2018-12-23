@@ -1,6 +1,6 @@
 # myopencv-python-study
 
-![logo](https://opencv.org/)
+![logo](https://opencv.org/assets/theme/logo.png)
 
 
 ## 참고 자료 
