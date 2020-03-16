@@ -1,28 +1,36 @@
 import numpy as np
 import cv2 as cv
+import sys
 
-img = cv.imread('../res/messi5.jpg')
+img = cv.imread('../messi5.jpg')
 
+# print(type(img) is np.ndarray )
+
+if (type(img) is np.ndarray) == False : 
+    print('file read failed')
+    sys.exit()
+
+print("-------read [100,100] BGR-------------")
 px = img[100,100]
 print(px)
-
 #read pixel
 print(px[0])
 print(px[1])
 print(px[2])
 
 
-print("--------------------")
+print("-------read [100,100,x] BGR-------------")
 
-print(img[100,100,0])
-print(img[100,100,1])
-print(img[100,100,2])
+print('B',img[100,100,0])
+print('G',img[100,100,1])
+print('R',img[100,100,2])
 
-print("--------------------")
+print("-----image info---------------")
 # get image info
-print(img.shape)
-print(img.size)
-print(img.dtype)
+print('shap : ', img.shape)
+print('size : ' , img.size)
+print('data type : ' , img.dtype)
+print('type : ' , type(img))
 
 #write pixel
 
