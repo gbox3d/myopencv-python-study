@@ -1,7 +1,11 @@
 import numpy as np
 import cv2 as cv
 # Load an color image in grayscale
-img = cv.imread('messi5.jpg',0) 
+img = cv.imread('./res/contour1.png',0) 
+
+print(type(img))
+# print(img[0])
+
 cv.namedWindow('image',cv.WINDOW_NORMAL)
 cv.imshow('image',img)
 # cv.waitKey(0)

@@ -1,7 +1,8 @@
 import numpy as np
 import cv2 as cv
 
-img = cv.imread('../messi5.jpg')
+img = cv.imread('../res/messi5.jpg')
+
 px = img[100,100]
 print(px)
 
@@ -10,10 +11,14 @@ print(px[0])
 print(px[1])
 print(px[2])
 
+
+print("--------------------")
+
 print(img[100,100,0])
 print(img[100,100,1])
 print(img[100,100,2])
 
+print("--------------------")
 # get image info
 print(img.shape)
 print(img.size)
