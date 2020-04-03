@@ -26,10 +26,13 @@ print("arcLength : " , cv.arcLength(cnt,True))
 
 _contours = [_contour  for _contour in contours if cv.contourArea(_contour) > 1000 ]
 
-print(len(_contours))
+print('윤각선 갯수 : ', len(_contours))
 
 font = cv.FONT_HERSHEY_SIMPLEX
-for _cnt in _contours : 
+
+# print(_contours)
+
+def contour_info (_cnt) : 
     _mmt = cv.moments(_cnt)
     
     x,y,w,h = cv.boundingRect(_cnt)
@@ -74,5 +77,30 @@ for _cnt in _contours :
     if coronaSize < 5 and solidity > 0.8 and abs(1-aspect_ratio) < 0.1 : 
         cv.putText(im,"it is circle",(cx,cy-10),font,0.5,(0,0,255),1,cv.LINE_4)
 
+# 끝점 구하기 
+    leftmost = tuple(_cnt[_cnt[:,:,0].argmin()][0])
+    rightmost = tuple(_cnt[_cnt[:,:,0].argmax()][0])
+    topmost = tuple(_cnt[_cnt[:,:,1].argmin()][0])
+    bottommost = tuple(_cnt[_cnt[:,:,1].argmax()][0])
 
+    print(_cnt[_cnt[:,:,0].argmax()])
+
+    print(leftmost,rightmost)
+
+    cv.circle(im,leftmost,16,(0,255,0),-1)
+    cv.circle(im,rightmost,16,(0,255,0),-1)
+    cv.circle(im,topmost,16,(0,255,0),-1)
+    cv.circle(im,bottommost,16,(0,255,0),-1)
+
+
+contour_info( _contours[1])
+
+
+cv.imshow("result",im)
+
+
+# while True : 
+#     if cv.waitKey(20) & 0xff == 27 : break
+
+# cv.destroyAllWindows()
 if cv.imwrite('../output/contours2.png',im) == True : print('save ok')
