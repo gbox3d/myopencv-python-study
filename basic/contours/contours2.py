@@ -1,7 +1,7 @@
 import numpy as np
 import cv2 as cv
 
-im = cv.imread('../res/contour1.png')
+im = cv.imread('../../res/contour1.png')
 if (type(im) is np.ndarray) == False : print('file read error');exit()
 
 imgray = cv.cvtColor(im, cv.COLOR_BGR2GRAY)
@@ -99,8 +99,9 @@ contour_info( _contours[1])
 cv.imshow("result",im)
 
 
-# while True : 
-#     if cv.waitKey(20) & 0xff == 27 : break
+while True : 
+    if cv.waitKey(20) & 0xff == 27 : break
 
-# cv.destroyAllWindows()
-if cv.imwrite('../output/contours2.png',im) == True : print('save ok')
+cv.destroyAllWindows()
+
+# if cv.imwrite('../output/contours2.png',im) == True : print('save ok')
