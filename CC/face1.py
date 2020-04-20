@@ -4,10 +4,6 @@ import cv2 as cv
 def onChange(x) : 
     pass
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 6c2d44d2c1c6815620f1256324f39c5dbf1bafd6
 face_cascade = cv.CascadeClassifier('../../data/haarcascades/haarcascade_frontalface_default.xml')
 # face_cascade = cv.CascadeClassifier('../../data/haarcascades/haarcascade_upperbody.xml')
 
