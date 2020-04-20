@@ -28,6 +28,7 @@ cv.namedWindow('Tracks')
 # cv.namedWindow('image')
 
 cv.createTrackbar('thres', 'Tracks', 0, 255, onChange)
+cv.setTrackbarPos('thres','Tracks',205)
 
 while True:
     _thres = cv.getTrackbarPos('thres', 'Tracks')
@@ -48,5 +49,26 @@ while True:
         
         _im = im.copy()
         cv.drawContours(_im, _contours, -1, (0, 255, 0), 2)
+
+        _cnt = _contours[0]
+
+
+# 끝점 구하기 
+        leftmost = tuple(_cnt[_cnt[:,:,0].argmin()][0])
+        rightmost = tuple(_cnt[_cnt[:,:,0].argmax()][0])
+        topmost = tuple(_cnt[_cnt[:,:,1].argmin()][0])
+        bottommost = tuple(_cnt[_cnt[:,:,1].argmax()][0])
+
+        print(leftmost)
+        print(rightmost)
+        print(topmost)
+        print(bottommost)
+
+        cv.circle(_im,leftmost,16,(0,255,255),-1)
+        cv.circle(_im,rightmost,16,(0,255,255),-1)
+        cv.circle(_im,topmost,16,(0,255,255),-1)
+        cv.circle(_im,bottommost,16,(0,255,255),-1)
+
+
         cv.imshow('imageThresh', thresh)
         cv.imshow('img', _im)
