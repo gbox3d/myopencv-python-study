@@ -4,7 +4,7 @@ import cv2 as cv
 def onChange(x) : 
     pass
 
-face_cascade = cv.CascadeClassifier('../../data/haarcascades/haarcascade_frontalface_default.xml')
+face_cascade = cv.CascadeClassifier('../data/haarcascades/haarcascade_frontalface_default.xml')
 # face_cascade = cv.CascadeClassifier('../../data/haarcascades/haarcascade_upperbody.xml')
 
 img = cv.imread('../res/mina.png')
