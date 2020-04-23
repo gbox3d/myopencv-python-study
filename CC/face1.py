@@ -31,7 +31,7 @@ while True:
     cv.imshow('img',_img)
 
     # cv.waitKey(0)
-    _k = cv.waitKey(0) & 0xff
+    _k = cv.waitKey(1) & 0xff
     if _k == 27 : break
 
 

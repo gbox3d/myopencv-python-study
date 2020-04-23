@@ -6,8 +6,10 @@ while(True) :
     gray = cv.cvtColor(frame,cv.COLOR_BGR2GRAY)
 
     cv.imshow('frame',gray)
-    if cv.waitKey(1) & 0xFF == ord('q') :
-        break
+    _k = cv.waitKey(1) & 0xff
+    if _k == 27 : break
+    # if cv.waitKey(1) & 0xFF == ord('q') :
+        # break
 
 cap.release()
 cv.destroyAllWindows()

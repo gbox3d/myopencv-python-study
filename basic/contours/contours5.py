@@ -3,7 +3,7 @@ import cv2 as cv
 
 #윤각선 정점갯수 줄이기 (근사값 찾기)
 
-im = cv.imread('../res/contour1.png')
+im = cv.imread('../../res/contour1.png')
 if (type(im) is np.ndarray) == False : print('file read error');exit()
 
 imgray = cv.cvtColor(im, cv.COLOR_BGR2GRAY)
@@ -64,28 +64,29 @@ while True:
     if _key == 27:
         cv.destroyAllWindows()
         break
-    elif _key == ord('r'):
-        _thres = cv.getTrackbarPos('thres', 'Tracks')
-        _epsilon = cv.getTrackbarPos('epsilon','Tracks')
-        print('epsilon , thres : ', _epsilon,_thres)
+    elif _key == ord('r'): print('epsilon , thres : ', _epsilon,_thres)
 
-        ret, thresh = cv.threshold(imgray, _thres, 255, 0)
-        contours, hierarchy = cv.findContours(
-            thresh, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
+    _thres = cv.getTrackbarPos('thres', 'Tracks')
+    _epsilon = cv.getTrackbarPos('epsilon','Tracks')
+    
 
-        _contours = [_contour  for _contour in contours if cv.contourArea(_contour) > 1000 ]
+    ret, thresh = cv.threshold(imgray, _thres, 255, 0)
+    contours, hierarchy = cv.findContours(
+        thresh, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
 
-        # print(_contours)
+    _contours = [_contour  for _contour in contours if cv.contourArea(_contour) > 1000 ]
 
-        _im = im.copy()
+    # print(_contours)
 
-        for _cnt in contours : 
-            if cv.contourArea(_cnt) > 1000 : 
-                _arcL = cv.arcLength(_cnt,True)
-                _approxPoly = cv.approxPolyDP(_cnt, float(_epsilon)/1000 * _arcL,True)
-                cv.drawContours(_im, [_approxPoly], 0, (0, 255, 0), 2)
-                #끝점 구하기 
-                findExtreamPoint(_im,_approxPoly)
+    _im = im.copy()
 
-        cv.imshow("result",_im)
+    for _cnt in contours : 
+        if cv.contourArea(_cnt) > 1000 : 
+            _arcL = cv.arcLength(_cnt,True)
+            _approxPoly = cv.approxPolyDP(_cnt, float(_epsilon)/1000 * _arcL,True)
+            cv.drawContours(_im, [_approxPoly], 0, (0, 255, 0), 2)
+            #끝점 구하기 
+            findExtreamPoint(_im,_approxPoly)
+
+    cv.imshow("result",_im)
 
