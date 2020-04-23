@@ -1,6 +1,6 @@
 import cv2 as cv
 
-face_cascade = cv.CascadeClassifier(''../data/haarcascades/haarcascade_frontalface_default.xml')
+face_cascade = cv.CascadeClassifier('../data/haarcascades/haarcascade_frontalface_default.xml')
 # face_cascade = cv.CascadeClassifier('../../data/haarcascades/haarcascade_upperbody.xml')
 
 cap = cv.VideoCapture(0)
