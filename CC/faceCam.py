@@ -1,14 +1,23 @@
 import cv2 as cv
+import sys 
+import time
 
 face_cascade = cv.CascadeClassifier('../data/haarcascades/haarcascade_frontalface_default.xml')
 # face_cascade = cv.CascadeClassifier('../../data/haarcascades/haarcascade_upperbody.xml')
 
-cap = cv.VideoCapture(0)
+camDevice = 0;
+if len(sys.argv) >=2 : camDevice = int(sys.args[1])
+
+print(camDevice)
+
+cap = cv.VideoCapture(camDevice)
+
 while(True) :
+    # time.sleep(1)
+
     ret,frame = cap.read()
     gray = cv.cvtColor(frame,cv.COLOR_BGR2GRAY)
-
-    faces = face_cascade.detectMultiScale(gray,1.3, 5)
+    faces = face_cascade.detectMultiScale(gray,1.1, 5)
 
     _img = frame.copy()
 
