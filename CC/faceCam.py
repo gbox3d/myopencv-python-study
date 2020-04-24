@@ -12,12 +12,23 @@ print(camDevice)
 
 cap = cv.VideoCapture(camDevice)
 
+if cap.get(3) < 10 : 
+    print('not found cam')
+    exit()
+else : 
+    print(f'found cam : {cap.get(3),{cap.get(4)}}') 
+    cap.set(3,640)
+    cap.set(4,480)
+    time.sleep(1)
+    print(f'change resolution : {cap.get(3),{cap.get(4)}}') 
+
+
 while(True) :
     # time.sleep(1)
 
     ret,frame = cap.read()
     gray = cv.cvtColor(frame,cv.COLOR_BGR2GRAY)
-    faces = face_cascade.detectMultiScale(gray,1.1, 5)
+    faces = face_cascade.detectMultiScale(gray,1.3, 5)
 
     _img = frame.copy()
 
