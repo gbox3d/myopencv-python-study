@@ -6,7 +6,7 @@ face_cascade = cv.CascadeClassifier('../data/haarcascades/haarcascade_frontalfac
 # face_cascade = cv.CascadeClassifier('../../data/haarcascades/haarcascade_upperbody.xml')
 
 camDevice = 0;
-if len(sys.argv) >=2 : camDevice = int(sys.args[1])
+if len(sys.argv) >=2 : camDevice = int(sys.argv[1])
 
 print(camDevice)
 
