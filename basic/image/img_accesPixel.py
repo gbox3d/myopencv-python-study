@@ -2,7 +2,7 @@ import numpy as np
 import cv2 as cv
 import sys
 
-img = cv.imread('../messi5.jpg')
+img = cv.imread('../../res/messi5.jpg')
 
 # print(type(img) is np.ndarray )
 
@@ -39,7 +39,10 @@ for x in range(100) :
         img[100 + y,100+x] = [0,0,255]
 
 #save result
-cv.imwrite('../output/test.png',img)
+cv.imshow("result",img)
+cv.waitKey(0)
+cv.destroyAllWindows()
+# cv.imwrite('../output/test.png',img)
 
 
 
